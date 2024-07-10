@@ -9,8 +9,8 @@ A simple Tullock contest game with possibly different costs of effort.
 
 class C(BaseConstants):
     NAME_IN_URL = 'contest'
-    PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 2
+    PLAYERS_PER_GROUP = 2
+    NUM_ROUNDS = 5
     ENDOWMENT = 20
     COST_PER_TICKET = 1
     PRIZE = 20
@@ -22,6 +22,7 @@ class Subsession(BaseSubsession):
 
     def setup(self):
         self.is_paid = (self.round_number == 1)
+        self.group_randomly()
         for group in self.get_groups():
             group.setup()
 
