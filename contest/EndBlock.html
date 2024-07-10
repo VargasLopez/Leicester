@@ -4,5 +4,15 @@
 
 {{ block content }}
 
+{{ for rd in player.in_all_rounds }}
+<p>
+    Tickets: {{ rd.tickets_purchased }}
+    Won: {{ rd.is_winner }}
+    Earnings: {{ rd.earnings }}
+    Is paid: {{ rd.subsession.is_paid }}
+</p>
+
+{{ end for }}
+
     {{ next_button }}
 {{ endblock }}

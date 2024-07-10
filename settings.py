@@ -20,7 +20,7 @@ SESSION_CONFIGS = [
         app_sequence=[
             "contest",
         ],
-        num_demo_participants=4,
+        num_demo_participants=2,
     )
 ]
 
