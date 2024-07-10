@@ -10,7 +10,7 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 2
     ENDOWMENT = 20
-    COST_PER_TICKET = 10
+    COST_PER_TICKET = 1
 
 
 class Subsession(BaseSubsession):
@@ -56,7 +56,11 @@ class SetupRound(WaitPage):
 
 
 class Decision(Page):
-    pass
+    form_model = "player"
+
+    @staticmethod
+    def get_form_fields(player):
+        return ["tickets_purchased"]
 
 
 class WaitForDecisions(WaitPage):
