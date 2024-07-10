@@ -9,10 +9,10 @@ A simple Tullock contest game with possibly different costs of effort.
 
 class C(BaseConstants):
     NAME_IN_URL = 'contest'
-    PLAYERS_PER_GROUP = 2
+    PLAYERS_PER_GROUP = 2 #oTree does fixed grouping by default.
     NUM_ROUNDS = 3
     ENDOWMENT = 20
-    COST_PER_TICKET = 1
+    COST_PER_TICKET = {1: 1, 2: 2} #here you are assuming that you only have two players in the group
     PRIZE = 20
 
 
@@ -60,7 +60,11 @@ class Player(BasePlayer):
 
     def setup(self):
         self.endowment = C.ENDOWMENT
-        self.cost_per_ticket = C.COST_PER_TICKET
+        self.cost_per_ticket = C.COST_PER_TICKET[self.id_in_group]
+
+    @property
+    def coplayer(self):
+        return self.get_others_in_group()[0]
 
 def creating_session(subsession):
     subsession.setup()
