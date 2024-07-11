@@ -1,0 +1,14 @@
+{{ block title }}
+    Results
+{{ endblock }}
+
+{{ block content }}
+
+{{ for rd in player.in_all_rounds }}
+<p>
+    Word: {{ rd.word }}; correct {{ rd.is_correct }}; payoff {{ rd.payoff }}.
+</p>
+{{ endfor }}
+
+    {{ next_button }}
+{{ endblock }}
